@@ -16,6 +16,6 @@ test_shell_syntax_and_license_preserved (test_customization.CustomizationTests) 
 test_upstream_script_updates_blocked_before_network_or_mutation (test_customization.CustomizationTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 16 tests in 3.222s
+Ran 16 tests in 4.085s
 
 OK

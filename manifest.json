@@ -1,5 +1,5 @@
 {
-  ".github/workflows/check.yml": "5f00b73a74fbe9f94a8acc80c5bf766f2a8043d08607addb0ea81c9dba423857",
+  ".github/workflows/check.yml": "d5087e5b6bd4ab8671e730a29eebae158aa3b946330f76780ce5f408b4fd8149",
   ".gitignore": "61f0c8d3e2642121b130f257fb44cc0c236419b14cfb5189e2ee4d2d43acc66c",
   "LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
   "NOTICE.md": "b1e5f75408c5039aacb79e2c458e71964c4e3051cb60f25ae167b7c06dd66712",
@@ -20,9 +20,9 @@
   "src/init.sh": "9bc048f07ee4d41585e94599dc60e629d051a658582a123e1da031c20dd6f144",
   "src/log.sh": "47257c2baa46ddd29b3313d0a84e7c77af9e90af0e9a2c2ffda7ac0823907fb9",
   "src/systemd.sh": "9cb6352e2ef936e7635ada948881d40881f517edd195b02779ed5c0c165b6aba",
-  "test-results.txt": "8142b71cd27e5243992e8726f652f53fad4abcefe2935152f4a064bf642908a5",
+  "test-results.txt": "4dc58fea63e7e98cf8597d4cb55c7b0769b96aabe46c49145cb970652c541271",
   "tests/fixtures/upstream-core.sh": "0234ced5447a3d7aca1fb150419828b6a2d428194ee7b9e8de611ba3a96edbd8",
-  "tests/test_bootstrap.py": "73909c8b3d659244bfe2b89e898b85213e82053616fc81d9728c981b02659b2b",
+  "tests/test_bootstrap.py": "43ccc5846c03a5319f89c6ebd5b16a6c6f1792f2bc6b62942ca17e425fd8fac2",
   "tests/test_customization.py": "27fd24c35a37c45481b04e87bb279293da2e81d686e95d1ad16b3269741ab512",
   "tools/build_release.py": "e96b6aa65d97adb44f306984942d765f80767fc35388ad7b3f883c98a9c7834d",
   "validation.json": "6b307ec18e295c8b939cff276af236683ed7337cbdb7b1408e988e473c8d9fcc"

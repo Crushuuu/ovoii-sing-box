@@ -4,13 +4,16 @@ import hashlib
 import io
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import tarfile
 import tempfile
 import unittest
 
 PROJECT = Path(__file__).resolve().parents[1]
-BASH = os.environ.get('OVOII_TEST_BASH', 'bash')
+BASH = shutil.which(os.environ.get('OVOII_TEST_BASH', 'bash'))
+if not BASH:
+    raise RuntimeError('Bash executable not found')
 
 
 class BootstrapTests(unittest.TestCase):

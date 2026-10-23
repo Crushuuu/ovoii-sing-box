@@ -1,5 +1,8 @@
 name: Check scripts
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -9,3 +12,6 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - run: python3 tests/test_customization.py
       - run: python3 tests/test_bootstrap.py
+      - name: Verify the published installer without installing
+        if: github.event_name == 'workflow_dispatch'
+        run: sudo bash bootstrap.sh --check
