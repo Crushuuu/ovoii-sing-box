@@ -1,0 +1,21 @@
+test_checksum_mismatch_never_runs_installer (test_bootstrap.BootstrapTests) ... ok
+test_download_failure_never_runs_installer (test_bootstrap.BootstrapTests) ... ok
+test_existing_check_does_not_apply (test_bootstrap.BootstrapTests) ... ok
+test_existing_install_only_replaces_management_scripts (test_bootstrap.BootstrapTests) ... ok
+test_fresh_check_does_not_install (test_bootstrap.BootstrapTests) ... ok
+test_fresh_server_installs_pinned_kernel (test_bootstrap.BootstrapTests) ... ok
+test_install_failure_is_not_reported_as_success (test_bootstrap.BootstrapTests) ... ok
+test_partial_existing_install_is_not_overwritten (test_bootstrap.BootstrapTests) ... ok
+test_check_apply_reapply_and_rollback_preserve_data (test_customization.CustomizationTests) ... ok
+test_export_changes_only_remark_for_supported_protocols (test_customization.CustomizationTests) ... ok
+test_failed_swap_restores_original_scripts (test_customization.CustomizationTests) ... ok
+test_installer_reports_success_after_cleanup (test_customization.CustomizationTests) ... ok
+test_menu_qr_and_attribution (test_customization.CustomizationTests) ... ok
+test_refuse_unrelated_command (test_customization.CustomizationTests) ... ok
+test_shell_syntax_and_license_preserved (test_customization.CustomizationTests) ... ok
+test_upstream_script_updates_blocked_before_network_or_mutation (test_customization.CustomizationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 3.222s
+
+OK

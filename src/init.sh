@@ -1,6 +1,8 @@
 #!/bin/bash
+# Modified for ovoii on 2026-10-23; see NOTICE.md (GPL-3.0).
 
 author=233boy
+. /etc/sing-box/sh/src/brand.sh
 # github=https://github.com/233boy/sing-box
 
 # bash fonts colors
@@ -52,10 +54,10 @@ load() {
     . $is_sh_dir/src/$1
 }
 
-# wget add --no-check-certificate
+# HTTPS downloads retain certificate verification.
 _wget() {
     # [[ $proxy ]] && export https_proxy=$proxy
-    wget --no-check-certificate "$@"
+    wget "$@"
 }
 
 # apt-get, yum, zypper or apk

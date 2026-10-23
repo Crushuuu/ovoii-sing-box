@@ -1,6 +1,14 @@
 #!/bin/bash
+# Modified for ovoii on 2026-10-23; see NOTICE.md (GPL-3.0).
 
 author=233boy
+ovoii_source_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P) || exit 1
+[[ -f "$ovoii_source_dir/src/brand.sh" && -f "$ovoii_source_dir/src/core.sh" ]] || {
+    echo "请解压完整的 ovoii 安装包后运行 install.sh。" >&2
+    exit 1
+}
+. "$ovoii_source_dir/src/brand.sh"
+local_install=1
 # github=https://github.com/233boy/sing-box
 
 # bash fonts colors
@@ -101,10 +109,10 @@ load() {
     . $is_sh_dir/src/$1
 }
 
-# wget add --no-check-certificate
+# HTTPS downloads retain certificate verification.
 _wget() {
     [[ $proxy ]] && export https_proxy=$proxy
-    wget --no-check-certificate $*
+    wget "$@"
 }
 
 # print a mesage
@@ -177,10 +185,7 @@ download() {
         is_ok=$is_core_ok
         ;;
     sh)
-        link=https://github.com/${is_sh_repo}/releases/latest/download/code.tar.gz
-        name="$is_core_name 脚本"
-        tmpfile=$tmpsh
-        is_ok=$is_sh_ok
+        err "ovoii 管理脚本仅从本地安装包安装，不下载上游管理脚本。"
         ;;
     jq)
         link=https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-linux-$is_arch
@@ -307,24 +312,28 @@ exit_and_del_tmpdir() {
         echo
         exit 1
     }
-    exit
+    exit 0
 }
 
 # main
 main() {
+    cd -- "$ovoii_source_dir" || exit 1
 
+    if [[ -e /usr/local/bin/ovoii || -L /usr/local/bin/ovoii ]]; then
+        err "ovoii 命令已存在，先确认已有安装；不要在此服务器上执行全新安装。"
+    fi
     # check old version
     [[ -f $is_sh_bin && -d $is_core_dir/bin && -d $is_sh_dir && -d $is_conf_dir ]] && {
-        err "检测到脚本已安装, 如需重装请使用${green} ${is_core} reinstall ${none}命令."
+        err "检测到脚本已安装，请使用本安装包的 bash apply-brand.sh --apply 保留配置升级。"
     }
 
     # check parameters
     [[ $# -gt 0 ]] && pass_args $@
 
     # show welcome msg
-    clear
+    [[ ! -t 1 ]] || clear
     echo
-    echo "........... $is_core_name script by $author .........."
+    echo "........... $is_brand_title $is_brand_ver .........."
     echo
 
     # start installing...
@@ -406,7 +415,9 @@ main() {
 
     # copy sh file or unzip sh zip file.
     if [[ $local_install ]]; then
-        cp -rf $PWD/* $is_sh_dir
+        for ovoii_file in sing-box.sh install.sh apply-brand.sh README.md NOTICE.md LICENSE src; do
+            cp -R "$ovoii_source_dir/$ovoii_file" "$is_sh_dir/" || exit_and_del_tmpdir
+        done
     else
         tar zxf $is_sh_ok -C $is_sh_dir
     fi
@@ -427,6 +438,7 @@ main() {
     # core command
     ln -sf $is_sh_dir/$is_core.sh $is_sh_bin
     ln -sf $is_sh_dir/$is_core.sh ${is_sh_bin/$is_core/sb}
+    ln -sf "$is_sh_dir/$is_core.sh" /usr/local/bin/ovoii
 
     # jq
     [[ $jq_not_found ]] && mv -f $is_jq_ok /usr/bin/jq

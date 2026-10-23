@@ -1,0 +1,32 @@
+{
+  "project": "ovoii · sing-box 管理",
+  "version": "1.0.3",
+  "date": "2026-10-23",
+  "upstream": "https://github.com/233boy/sing-box",
+  "upstream_commit": "2d78583b5aecccb0da0148a816bc1495a284509f",
+  "result": "PASS_LOCAL",
+  "test_groups": 16,
+  "node_export_scenarios": 10,
+  "sensitive_user_configuration_included": false,
+  "checks": [
+    "Original management customization tests: 8 passed",
+    "GitHub entrypoint behavior tests: 8 passed",
+    "Pinned runtime archive with embedded SHA-256 verification",
+    "Preserve configuration during existing-install upgrades",
+    "Download/checksum/partial-install failures stop before mutation",
+    "Publication source excludes real user credentials and subscriptions"
+  ],
+  "previous_live_validation": {
+    "version": "1.0.2",
+    "system": "Ubuntu 22.04 amd64",
+    "core": "sing-box 1.14.3",
+    "fresh_installation": "PASS",
+    "node_connection": "PASS"
+  },
+  "not_verified": [
+    "Full 1.0.3 installation on a fresh production VPS",
+    "iPhone and router installation acceptance",
+    "Throughput",
+    "Full security audit"
+  ]
+}

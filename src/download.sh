@@ -1,3 +1,4 @@
+# Modified for ovoii on 2026-10-23; see NOTICE.md (GPL-3.0).
 get_latest_version() {
     case $1 in
     core)
@@ -5,8 +6,7 @@ get_latest_version() {
         url="https://api.github.com/repos/${is_core_repo}/releases/latest?v=$RANDOM"
         ;;
     sh)
-        name="$is_core_name 脚本"
-        url="https://api.github.com/repos/$is_sh_repo/releases/latest?v=$RANDOM"
+        err "ovoii 管理脚本仅支持本地包更新。"
         ;;
     caddy)
         name="Caddy"
@@ -20,6 +20,7 @@ get_latest_version() {
     unset name url
 }
 download() {
+    [[ $1 == sh ]] && err "ovoii 管理脚本仅支持本地包更新。"
     latest_ver=$2
     [[ ! $latest_ver ]] && get_latest_version $1
     # tmp dir
@@ -38,12 +39,7 @@ download() {
         chmod +x $is_core_bin
         ;;
     sh)
-        name="$is_core_name 脚本"
-        tmpfile=$tmpdir/sh.tar.gz
-        link="https://github.com/${is_sh_repo}/releases/download/${latest_ver}/code.tar.gz"
-        download_file
-        tar zxf $tmpfile -C $is_sh_dir
-        chmod +x $is_sh_bin ${is_sh_bin/$is_core/sb}
+        err "ovoii 管理脚本仅支持本地包更新。"
         ;;
     caddy)
         name="Caddy"

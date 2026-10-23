@@ -1,3 +1,4 @@
+# Modified for ovoii on 2026-10-23; see NOTICE.md (GPL-3.0).
 show_help() {
     case $1 in
     api | x25519 | tls | run | uuid | version)
@@ -5,8 +6,8 @@ show_help() {
         ;;
     *)
         [[ $1 ]] && warn "未知选项 '$1'"
-        msg "$is_core_name script $is_sh_ver by $author"
-        msg "Usage: $is_core [options]... [args]... "
+        msg "$is_brand_title $is_brand_ver"
+        msg "Usage: ovoii [options]... [args]... "
         msg
         help_info=(
             "基本:"
@@ -50,11 +51,11 @@ show_help() {
             "管理:"
             "   un, uninstall                                   卸载"
             "   u, update [core | sh | caddy] [ver]             更新"
-            "   U, update.sh                                    更新脚本"
+            "   U, update.sh                                    更新脚本（提示本地升级方法）"
             "   s, status                                       运行状态"
             "   start, stop, restart [caddy]                    启动, 停止, 重启"
             "   t, test                                         测试运行"
-            "   reinstall                                       重装脚本\n"
+            "   reinstall                                       显示本地重装说明\n"
             "测试:"
             # "   client, genc [name]                             显示用于客户端 JSON, 仅供参考"
             "   debug [name]                                    显示一些 debug 信息, 仅供参考"
@@ -71,24 +72,18 @@ show_help() {
             msg "$v"
         done
         msg "谨慎使用 del, ddel, 此选项会直接删除配置; 无需确认"
-        msg "反馈问题) $(msg_ul https://github.com/${is_sh_repo}/issues) "
-        msg "文档(doc) $(msg_ul https://233boy.com/$is_core/$is_core-script/)"
+        msg "ovoii 使用说明: $is_sh_dir/README.md"
+        msg "内核文档: https://sing-box.sagernet.org/"
         ;;
 
     esac
 }
 
 about() {
-    ####### 要点13脸吗只会改我链接的小人 #######
-    unset c n m s b
-    msg
-    msg "网站: $(msg_ul https://233boy.com)"
-    msg "频道: $(msg_ul https://t.me/tg2333)"
-    msg "群组: $(msg_ul https://t.me/tg233boy)"
-    msg "Github: $(msg_ul https://github.com/${is_sh_repo})"
-    msg "Twitter: $(msg_ul https://twitter.com/ai233boy)"
-    msg "$is_core_name site: $(msg_ul https://sing-box.sagernet.org/)"
-    msg "$is_core_name core: $(msg_ul https://github.com/${is_core_repo})"
-    msg
-    ####### 要点13脸吗只会改我链接的小人 #######
+    msg "\n$is_brand_title $is_brand_ver"
+    msg "本地定制版；基于 233boy/sing-box ${is_sh_ver}（GPL-3.0）。"
+    msg "原项目: https://github.com/233boy/sing-box"
+    msg "上游基线: $is_upstream_commit"
+    msg "许可证及修改说明: $is_sh_dir/LICENSE；$is_sh_dir/NOTICE.md"
+    msg "内核: https://github.com/SagerNet/sing-box\n"
 }

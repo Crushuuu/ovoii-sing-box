@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+dist/
+*.tar.gz
+*.pem
+*.key
+.env
+urls.json
